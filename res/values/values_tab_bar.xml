@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tab_bar_item_margin_l_r">0.5dp</dimen>
+    <dimen name="tab_bar_height">60dp</dimen>
+    <dimen name="tab_bar_normal_item_height">46dp</dimen>
+    <dimen name="tab_bar_item_margin_t_b">1dp</dimen>
+    <color name="tab_bar_item_text">#000</color>
+	<dimen name="tab_bar_item_text_size">12sp</dimen>
+	<string name="tab_bar_item_title1">TAB1</string>
+	<string name="tab_bar_item_title2">TAB2</string>
+	<string name="tab_bar_item_title3">TAB3</string>
+</resources>

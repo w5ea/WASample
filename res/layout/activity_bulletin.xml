@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#f55">
+    
+    <fragment android:id="@+id/bulletin"
+        android:name="cn.way.wandroid.views.BulletinBoardFragment"
+        android:layout_width="match_parent" android:layout_height="30dp" 
+        android:layout_marginLeft="40dp"/>
+
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <cn.way.wandroid.slidingmenu.SlidingMenu
+        xmlns:sliding="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/slidingMenu"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        sliding:behindOffset="50dp"
+        sliding:behindScrollScale="0.5"
+        sliding:fadeDegree="0"
+        sliding:fadeEnabled="false"
+        sliding:selectorEnabled="false"
+        sliding:shadowWidth="0dp"
+        sliding:touchModeAbove="fullscreen"
+        sliding:viewAbove="@layout/activity_views"
+        sliding:viewBehind="@layout/activity_gson_usage" />
+
+</LinearLayout>
