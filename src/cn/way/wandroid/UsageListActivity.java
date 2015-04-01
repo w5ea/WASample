@@ -39,8 +39,6 @@ import cn.way.wandroid.utils.WLog;
 import cn.way.wandroid.webview.WebviewUsage;
 
 import com.umeng.analytics.MobclickAgent;
-import com.umeng.update.UmengUpdateAgent;
-import com.umeng.update.UpdateConfig;
 
 public class UsageListActivity extends FragmentActivity{
     @Override
@@ -62,9 +60,8 @@ public class UsageListActivity extends FragmentActivity{
 			}
 		});
         setTitle(AppUtils.getAppName(this)+AppUtils.getAppVersionName(this));
-        UpdateConfig.setDebug(BuildConfig.DEBUG);
         MobclickAgent.setDebugMode(BuildConfig.DEBUG);
-        UmengUpdateAgent.update(this);
+   
         WLog.d(new BigDecimal(new BigInteger("8888", 10)).toString());
         WLog.d(new BigDecimal(new BigInteger("8888", 16)).toString());
         WLog.d(new BigDecimal(new BigInteger("8888", Character.MAX_RADIX)).toString());
