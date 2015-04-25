@@ -18,6 +18,7 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.ImageView;
 import cn.way.wandroid.R;
+import cn.way.wandroid.imageloader.ImageManager;
 import cn.way.wandroid.toast.Toaster;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -55,7 +56,6 @@ public class ImagePreviewDialog extends Dialog {
 		});
 	}
 	
-	@SuppressLint("NewApi")
 	public void showConfirmDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),android.R.style.Theme_Holo_Panel);
 		builder.setTitle("温馨提示");
@@ -101,6 +101,7 @@ public class ImagePreviewDialog extends Dialog {
 		try {
 			Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
 			saveBitmap(bitmap);
+			ImageManager.saveImageToPhotoAlbum(getContext(), file.getAbsolutePath());
 		} catch (Exception e) {
 		}
 	}

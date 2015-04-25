@@ -19,9 +19,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 import cn.way.wandroid.R;
 import cn.way.wandroid.TestResource;
+import cn.way.wandroid.imageloader.ImageManager;
 import cn.way.wandroid.imageloader.displayingbitmaps.ui.ImageDetailActivity;
 import cn.way.wandroid.imageloader.displayingbitmaps.ui.ImageGridActivity;
-import cn.way.wandroid.imageloader.universal.ImageManager;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;

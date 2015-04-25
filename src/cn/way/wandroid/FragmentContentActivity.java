@@ -35,9 +35,20 @@ public class FragmentContentActivity extends BaseActivity {
 			} 
 		}
 	}
+	/**
+	 * 启动一个Activity
+	 * @param parent 父Activity
+	 * @param clazz 要显示的Fragment
+	 */
 	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz){
 		startWithFragment(parent, clazz, false);
 	}
+	/**
+	 * 启动一个Activity
+	 * @param parent 父Activity
+	 * @param clazz 要显示的Fragment
+	 * @param finishConfirm true 则点击两次返回才退出，false直接退出
+	 */
 	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz,boolean finishConfirm){
 		if (parent!=null&&clazz!=null) {
 			Intent intent = new Intent(parent, FragmentContentActivity.class);

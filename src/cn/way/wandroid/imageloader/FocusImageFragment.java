@@ -8,7 +8,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import cn.way.wandroid.R;
-import cn.way.wandroid.imageloader.universal.ImageManager;
 
 public class FocusImageFragment extends Fragment {
     private static final String IMAGE_DATA_EXTRA = "extra_image_data";
