@@ -68,7 +68,8 @@ public class UsageListActivity extends FragmentActivity{
         findViewById(R.id.activityAdapterBtn).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				PageAdapter.turnToPage(UsageListActivity.this, UsageListPage.class);
+				FragmentContentActivity.startWithFragment(UsageListActivity.this, UsageListFragement.class,false);
+//				PageAdapter.turnToPage(UsageListActivity.this, UsageListPage.class);
 			}
 		});
 //        GuideAction ga = GuideAction.A1;
