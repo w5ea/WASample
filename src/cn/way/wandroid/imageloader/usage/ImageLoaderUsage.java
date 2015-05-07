@@ -96,7 +96,7 @@ public class ImageLoaderUsage extends FragmentActivity {
         adapter.notifyDataSetChanged();
     }
 
-    static final int PAGE_SIZE = 500;
+    static final int PAGE_SIZE = 20;
 	private void loadData(final boolean refresh){
 		
 		int pageIndex = 0;

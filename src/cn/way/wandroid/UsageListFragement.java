@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import cn.way.wandroid.toast.Toaster;
+import cn.way.wandroid.utils.WLog;
 import cn.way.wandroid.views.ScratchViewFragment;
 
 public class UsageListFragement extends Fragment{
@@ -30,12 +33,20 @@ public class UsageListFragement extends Fragment{
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				DummyItem item = DummyContent.ITEMS.get(position);
-					FragmentContentActivity.startWithFragment(getActivity(), item.clazz,false);
+					FragmentContentActivity.startWithFragment(getActivity(), item.clazz,1001,false);
 			}
 		});
 		return view;
 	}
-
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		String result = "request:"+requestCode+" resultCode:"+resultCode+" data:"+data;
+		Toaster.instance(getActivity()).setup(result).show();
+		WLog.d(result);
+	}
+	
 	public static class DummyContent {
 	    public static List<DummyItem> ITEMS = new ArrayList<DummyItem>();
 	    static {

@@ -15,6 +15,7 @@ import cn.way.wandroid.toast.Toaster;
 public class FragmentContentActivity extends BaseActivity {
 	public static String EXTRA_FRAGMENT_CLASS = "EXTRA_FRAGMENT_CLASS";
 	public static String EXTRA_FINISH_CONFIRM = "EXTRA_FINISH_CONFIRM";
+	private Fragment fragment;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,7 +27,6 @@ public class FragmentContentActivity extends BaseActivity {
 		@SuppressWarnings("unchecked")
 		Class<? extends Fragment> clazz = (Class<? extends Fragment>) getIntent().getSerializableExtra(EXTRA_FRAGMENT_CLASS);
 		if (clazz!=null) {
-			Fragment fragment = null;
 			try {
 				fragment = clazz.newInstance();
 				getFragmentManager().beginTransaction().replace(layoutId, fragment).commit();
@@ -41,7 +41,13 @@ public class FragmentContentActivity extends BaseActivity {
 	 * @param clazz 要显示的Fragment
 	 */
 	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz){
-		startWithFragment(parent, clazz, false);
+		startWithFragment(parent, clazz,-1, false);
+	}
+	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz,int requestCode){
+		startWithFragment(parent, clazz,requestCode, false);
+	}
+	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz,boolean finishConfirm){
+		startWithFragment(parent, clazz,-1, finishConfirm);
 	}
 	/**
 	 * 启动一个Activity
@@ -49,12 +55,20 @@ public class FragmentContentActivity extends BaseActivity {
 	 * @param clazz 要显示的Fragment
 	 * @param finishConfirm true 则点击两次返回才退出，false直接退出
 	 */
-	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz,boolean finishConfirm){
+	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz,int requestCode,boolean finishConfirm){
 		if (parent!=null&&clazz!=null) {
 			Intent intent = new Intent(parent, FragmentContentActivity.class);
 			intent.putExtra(EXTRA_FRAGMENT_CLASS, clazz);
 			intent.putExtra(EXTRA_FINISH_CONFIRM, finishConfirm);
-			parent.startActivity(intent);
+			parent.startActivityForResult(intent, requestCode);
+		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (fragment!=null) {
+			fragment.onActivityResult(requestCode, resultCode, data);
 		}
 	}
 	

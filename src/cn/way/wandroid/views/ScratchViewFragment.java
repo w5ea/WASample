@@ -1,13 +1,13 @@
 package cn.way.wandroid.views;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import cn.way.wandroid.R;
 import cn.way.wandroid.views.WScratchView.ProgressListener;
 
@@ -16,6 +16,13 @@ import cn.way.wandroid.views.WScratchView.ProgressListener;
  * @2015年4月30日
  */
 public class ScratchViewFragment extends Fragment {
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		Intent data = new Intent("RESULT");
+		data.putExtra("p1", "i am p1");
+		getActivity().setResult(2001, data);
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
