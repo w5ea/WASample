@@ -13,9 +13,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import cn.way.wandroid.applation.PhotoPickerUsage;
 import cn.way.wandroid.toast.Toaster;
 import cn.way.wandroid.utils.WLog;
 import cn.way.wandroid.views.ScratchViewFragment;
+import cn.way.wandroid.views.layouts.ExpandableListViewUsage;
 
 public class UsageListFragement extends Fragment{
 	@Override
@@ -51,6 +53,8 @@ public class UsageListFragement extends Fragment{
 	    public static List<DummyItem> ITEMS = new ArrayList<DummyItem>();
 	    static {
 	    	addItem(new DummyItem(ScratchViewFragment.class));
+	    	addItem(new DummyItem(ExpandableListViewUsage.class));
+	    	addItem(new DummyItem(PhotoPickerUsage.class));
 	    }
 	    static void addItem(DummyItem item) {
 	        ITEMS.add(item);

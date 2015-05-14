@@ -1,0 +1,25 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    >
+    <TextView android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:text="- -"/>
+    <TextView android:id="@+id/button"
+        android:layout_height="match_parent"
+        android:layout_width="60dp"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="BUTTON"
+        android:textColor="@android:color/white"
+        android:background="@drawable/selector_green_btn"
+        />
+</LinearLayout>
