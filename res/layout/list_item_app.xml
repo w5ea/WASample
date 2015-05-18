@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#99f">
-    <cn.way.wandroid.imageloader.loader.RecyclingImageView
+    <cn.way.wandroid.views.imageview.CircularImageView
         android:id="@+id/profile"
         android:layout_width="@dimen/list_image_thumbnail_size"
         android:layout_height="@dimen/list_image_thumbnail_size"
