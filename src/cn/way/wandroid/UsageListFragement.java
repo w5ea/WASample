@@ -18,6 +18,7 @@ import cn.way.wandroid.toast.Toaster;
 import cn.way.wandroid.utils.WLog;
 import cn.way.wandroid.views.ScratchViewFragment;
 import cn.way.wandroid.views.layouts.ExpandableListViewUsage;
+import cn.way.wandroid.views.wdialog.WDialogAndListViewUsage;
 
 public class UsageListFragement extends Fragment{
 	@Override
@@ -55,6 +56,7 @@ public class UsageListFragement extends Fragment{
 	    	addItem(new DummyItem(ScratchViewFragment.class));
 	    	addItem(new DummyItem(ExpandableListViewUsage.class));
 	    	addItem(new DummyItem(PhotoPickerUsage.class));
+	    	addItem(new DummyItem(WDialogAndListViewUsage.class));
 	    }
 	    static void addItem(DummyItem item) {
 	        ITEMS.add(item);
