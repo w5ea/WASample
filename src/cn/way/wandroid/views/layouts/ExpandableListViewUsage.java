@@ -11,6 +11,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.TextView;
 import cn.way.wandroid.R;
 import cn.way.wandroid.toast.Toaster;
@@ -48,7 +49,6 @@ public class ExpandableListViewUsage extends Fragment {
 				return false;
 			}
 		});
-
 		adapter = new BaseExpandableListAdapter() {
 			@Override
 			public boolean isChildSelectable(int groupPosition,

@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import cn.way.wandroid.R;
+import cn.way.wandroid.imageloader.ImageManager;
 
 public class FocusImageFragment extends Fragment {
     private static final String IMAGE_DATA_EXTRA = "extra_image_data";
@@ -15,7 +16,7 @@ public class FocusImageFragment extends Fragment {
     private ImageView mImageView;
     private int layoutId;
     private OnClickListener clickListener;
-  
+
     public static FocusImageFragment newInstance(int layoutId,String imageUrl,OnClickListener clickListener) {
         final FocusImageFragment f = new FocusImageFragment();
         f.setLayoutId(layoutId);
@@ -23,6 +24,7 @@ public class FocusImageFragment extends Fragment {
         final Bundle args = new Bundle();
         args.putString(IMAGE_DATA_EXTRA, imageUrl);
         f.setArguments(args);
+
         return f;
     }
 
@@ -53,7 +55,9 @@ public class FocusImageFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ImageManager.instance(getActivity()).loadImage(mImageUrl, mImageView);
+        if (mImageUrl!=null&&mImageView!=null) {
+            ImageManager.instance(getActivity()).loadImage(mImageUrl, mImageView);
+        }
     }
 
     @Override

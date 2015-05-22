@@ -36,6 +36,7 @@ import android.widget.Toast;
 import cn.way.wandroid.BaseFragmentActivity;
 import cn.way.wandroid.BuildConfig;
 import cn.way.wandroid.R;
+import cn.way.wandroid.imageloader.FocusImageFragment;
 import cn.way.wandroid.imageloader.Utils;
 import cn.way.wandroid.imageloader.displayingbitmaps.provider.Images;
 import cn.way.wandroid.imageloader.loader.ImageCache;
@@ -94,7 +95,7 @@ public class ImageDetailActivity2 extends BaseFragmentActivity implements OnClic
         mImageFetcher.setImageFadeIn(false);
 
         // Set up ViewPager and backing adapter
-        mAdapter = new ImagePagerAdapter(getSupportFragmentManager(),getImageLoader(), Images.imageUrls.length);
+        mAdapter = new ImagePagerAdapter(getSupportFragmentManager(),Images.imageUrls.length);
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
         mPager.setPageMargin((int) getResources().getDimension(R.dimen.horizontal_page_margin));
@@ -192,11 +193,9 @@ public class ImageDetailActivity2 extends BaseFragmentActivity implements OnClic
      */
     private class ImagePagerAdapter extends FragmentStatePagerAdapter {
         private final int mSize;
-        private ImageLoader loader;
-        public ImagePagerAdapter(FragmentManager fm,ImageLoader loader, int size) {
+        public ImagePagerAdapter(FragmentManager fm, int size) {
             super(fm);
             mSize = size;
-            this.loader = loader;
         }
 
         @Override
@@ -206,7 +205,7 @@ public class ImageDetailActivity2 extends BaseFragmentActivity implements OnClic
 
         @Override
         public Fragment getItem(int position) {
-            return FocusImageFragment.newInstance(R.layout.image_detail_fragment,loader,Images.imageUrls[position],null);
+            return FocusImageFragment.newInstance(R.layout.image_detail_fragment,Images.imageUrls[position],null);
         }
     }
     

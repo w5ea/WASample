@@ -3,6 +3,7 @@ package cn.way.wandroid.views.wdialog;
 import java.util.ArrayList;
 
 import cn.way.wandroid.R;
+import cn.way.wandroid.utils.WLog;
 import cn.way.wandroid.views.ContentControlDialog;
 import cn.way.wandroid.views.ContentControlDialog.DialogContentController;
 import android.annotation.SuppressLint;
@@ -20,7 +21,11 @@ import android.widget.ListView;
  * @2015年5月19日
  */
 public class WDialogAndListViewUsage extends Fragment {
-	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		WLog.d("TTTTTTTTTTTTTTTTTT:"+getActivity().getIntent().getStringExtra("TEST"));
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

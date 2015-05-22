@@ -1,6 +1,7 @@
 package cn.way.wandroid.activities.viewpager;
 
 import java.util.ArrayList;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,28 +14,16 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import cn.way.wandroid.R;
-import cn.way.wandroid.imageloader.displayingbitmaps.ui.FocusImageFragment;
-import cn.way.wandroid.imageloader.loader.ImageLoader;
+import cn.way.wandroid.imageloader.FocusImageFragment;
 import cn.way.wandroid.utils.PageNavigateManager;
 import cn.way.wandroid.utils.PageNavigateManager.PageNavigateTag;
 import cn.way.wandroid.utils.WTimer;
 import cn.way.wandroid.views.PageIndicator;
-import cn.way.wandroid.views.WViewPager;
 
 public class ViewPagerUsage extends FragmentActivity {
 	private ArrayList<Fragment>fragments = new ArrayList<Fragment>();
 //	private ArrayList<View> views = new ArrayList<View>();
 	WTimer timer;
-	private ImageLoader imageLoader;
-    public ImageLoader getImageLoader() {
-		if (imageLoader==null) {
-			imageLoader = new ImageLoader();
-			int width = (int) (100*getResources().getDisplayMetrics().density*2);
-			int height = (int) (100*getResources().getDisplayMetrics().density*2);
-			imageLoader.init(this, width,height);
-		}
-		return imageLoader;
-	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,13 +33,14 @@ public class ViewPagerUsage extends FragmentActivity {
 		if (PageNavigateManager.getTag()==PageNavigateTag.PageNavigateTagPrizes) {
 			
 		}
-		final WViewPager pager = (WViewPager) findViewById(R.id.viewPager);
-		pager.setScrollable(false);
+		final LoopViewPager pager = (LoopViewPager) findViewById(R.id.viewPager);
+		pager.setBoundaryCaching(true);
+//		pager.setScrollable(false);
 //		final ArrayList<String>imageUrls = new ArrayList<String>();
 		for (int i = 0; i < 5; i++) {
 //			fragments.add(new SimpleFragment().setTitle(""+i));
 			
-			fragments.add(FocusImageFragment.newInstance(R.layout.image_detail_fragment,getImageLoader(), "http://cn.bing.com/th?id=OJ.7V064eoyjkShZg&pid=MSNJVFeeds",new OnClickListener() {
+			fragments.add(FocusImageFragment.newInstance(R.layout.image_detail_fragment, "http://cn.bing.com/th?id=OJ.7V064eoyjkShZg&pid=MSNJVFeeds",new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 //					Toast.makeText(getApplicationContext(), "wwww", 0).show();
@@ -72,13 +62,16 @@ public class ViewPagerUsage extends FragmentActivity {
 		final PageIndicator pageIndicator = (PageIndicator) findViewById(R.id.pageIndicator);
 		pageIndicator.init(R.drawable.selector_dot, fragments.size(),0,0);
 //		pager.setAdapter(new FocusImagePagerAdapter(getSupportFragmentManager(), getImageLoader(), imageUrls));
-		pager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+		pager.setAdapter(
+				new LoopPagerAdapterWrapper(
+						new FragmentPagerAdapter(getSupportFragmentManager()) {
 			@Override
 			public int getCount() {
-				return fragments.size();
+				return fragments.size()-2;
 			}
 			@Override
 			public Fragment getItem(int position) {
+//				position = LoopViewPager.toRealPosition(position, getCount());
 				return fragments.get(position);
 			}
 			/*重写这个方法。来保证在调用pager.getAdapter().notifyDataSetChanged();时能正确执行*/
@@ -86,7 +79,9 @@ public class ViewPagerUsage extends FragmentActivity {
 		    public int getItemPosition(Object object) { 
 		        return POSITION_NONE; 
 		    }
-		});
+		}
+						)
+						);
 		timer = new WTimer() {
 			@Override
 			protected void onTimeGoesBy(long totalTimeLength) {
@@ -96,10 +91,10 @@ public class ViewPagerUsage extends FragmentActivity {
 //				imageUrls.remove(0);
 //				imageUrls.remove(0);
 //				imageUrls.remove(0);
-				fragments.clear();
-				for (int i = 0; i < 3; i++) {
-					fragments.add(FocusImageFragment.newInstance(R.layout.image_detail_fragment,getImageLoader(), "http://cn.bing.com/th?id=OJ.7V064eoyjkShZg&pid=MSNJVFeeds",null));
-				}
+//				fragments.clear();
+//				for (int i = 0; i < 3; i++) {
+//					fragments.add(FocusImageFragment.newInstance(R.layout.image_detail_fragment,getImageLoader(), "http://cn.bing.com/th?id=OJ.7V064eoyjkShZg&pid=MSNJVFeeds",null));
+//				}
 //				fragments.remove(0);
 //				fragments.remove(0);
 				pager.getAdapter().notifyDataSetChanged();

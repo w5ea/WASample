@@ -36,7 +36,9 @@ public class UsageListFragement extends Fragment{
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				DummyItem item = DummyContent.ITEMS.get(position);
-					FragmentContentActivity.startWithFragment(getActivity(), item.clazz,1001,false);
+					Bundle extras = new Bundle();
+					extras.putString("TEST", "TESTVALUE");
+					FragmentContentActivity.startWithFragment(getActivity(),extras,item.clazz,1001,false);
 			}
 		});
 		return view;

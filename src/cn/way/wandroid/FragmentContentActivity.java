@@ -40,14 +40,24 @@ public class FragmentContentActivity extends BaseActivity {
 	 * @param parent 父Activity
 	 * @param clazz 要显示的Fragment
 	 */
+	public static void startWithFragment(Activity parent,Bundle extras,Class<? extends Fragment> clazz){
+		startWithFragment(parent, extras,clazz,-1, false);
+	}
+	public static void startWithFragment(Activity parent,Bundle extras,Class<? extends Fragment> clazz,int requestCode){
+		startWithFragment(parent,extras, clazz,requestCode, false);
+	}
+	public static void startWithFragment(Activity parent,Bundle extras,Class<? extends Fragment> clazz,boolean finishConfirm){
+		startWithFragment(parent, extras,clazz,-1, finishConfirm);
+	}
+	
 	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz){
-		startWithFragment(parent, clazz,-1, false);
+		startWithFragment(parent,null, clazz,-1, false);
 	}
 	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz,int requestCode){
-		startWithFragment(parent, clazz,requestCode, false);
+		startWithFragment(parent,null, clazz,requestCode, false);
 	}
 	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz,boolean finishConfirm){
-		startWithFragment(parent, clazz,-1, finishConfirm);
+		startWithFragment(parent,null, clazz,-1, finishConfirm);
 	}
 	/**
 	 * 启动一个Activity
@@ -55,11 +65,12 @@ public class FragmentContentActivity extends BaseActivity {
 	 * @param clazz 要显示的Fragment
 	 * @param finishConfirm true 则点击两次返回才退出，false直接退出
 	 */
-	public static void startWithFragment(Activity parent,Class<? extends Fragment> clazz,int requestCode,boolean finishConfirm){
+	public static void startWithFragment(Activity parent,Bundle extras,Class<? extends Fragment> clazz,int requestCode,boolean finishConfirm){
 		if (parent!=null&&clazz!=null) {
 			Intent intent = new Intent(parent, FragmentContentActivity.class);
 			intent.putExtra(EXTRA_FRAGMENT_CLASS, clazz);
 			intent.putExtra(EXTRA_FINISH_CONFIRM, finishConfirm);
+			if(extras!=null)intent.putExtras(extras);
 			parent.startActivityForResult(intent, requestCode);
 		}
 	}
