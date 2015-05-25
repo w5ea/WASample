@@ -11,10 +11,11 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
-import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.TextView;
 import cn.way.wandroid.R;
 import cn.way.wandroid.toast.Toaster;
+
+import com.nineoldandroids.view.ViewHelper;
 
 /**
  * @author Wayne
@@ -65,7 +66,7 @@ public class ExpandableListViewUsage extends Fragment {
 			public View getGroupView(int groupPosition, boolean isExpanded,
 					View convertView, ViewGroup parent) {
 				View view = getActivity().getLayoutInflater().inflate(
-						R.layout.usage_expandable_list_view_item, null);
+						R.layout.usage_expandable_list_view_item, parent,false);
 				TextView tv = (TextView) view.findViewById(R.id.tvTitle);
 				tv.setText(groupPosition + 1 + ". " + titles[groupPosition]);
 				View button = view.findViewById(R.id.button);
@@ -76,6 +77,11 @@ public class ExpandableListViewUsage extends Fragment {
 						toast("onClick: " + titles[gp]);
 					}
 				});
+				if (isExpanded) {
+					ViewHelper.setRotation(button, 90);
+				}else{
+					ViewHelper.setRotation(button, 0);
+				}
 				return view;
 			}
 
@@ -103,7 +109,7 @@ public class ExpandableListViewUsage extends Fragment {
 			public View getChildView(int groupPosition, int childPosition,
 					boolean isLastChild, View convertView, ViewGroup parent) {
 				View view = getActivity().getLayoutInflater().inflate(
-						R.layout.usage_expandable_list_view_item_child, null);
+						R.layout.usage_expandable_list_view_item_child, parent,false);
 				TextView tv = (TextView) view.findViewById(R.id.tvText);
 				tv.setText(titles[groupPosition].toLowerCase(Locale
 						.getDefault()));
