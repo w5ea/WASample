@@ -30,7 +30,7 @@ import cn.way.wandroid.utils.WLog;
  * @d2015年5月14日
  */
 public class PhotoPickerUsage extends Fragment {
-	private String[] areas = new String[] { "拍照", "从手机相册中选择", "取消" };
+	private String[] areas = { "拍照", "从手机相册中选择", "取消" };
 	private Bitmap photo;
 	private ImageView iv;
 	private File photoTempOFile;//通过一个缓存文件来保存原始图像
@@ -138,7 +138,7 @@ public class PhotoPickerUsage extends Fragment {
 		WLog.d("resultCode: "+resultCode+" data = " + data);
 		switch (requestCode) {
 		case TAKE_PHOTO:
-			//设置竖屏来保证图片正立
+			//设置竖屏来保证图片正立,当在extra中noFaceDetection设置为false时就不需要了。
 //			getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 			if (resultCode == Activity.RESULT_OK) {
 				Uri imageUriO = Uri.fromFile(photoTempOFile);

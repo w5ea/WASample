@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-	<ImageView 
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:src="@drawable/ic_launcher"
-	    android:contentDescription="@string/app_name"/>
-<!--     <cn.way.wandroid.graphics.AnnularProgressView -->
-<!--         android:id="@+id/progressView" -->
-<!--         android:layout_width="300dp" -->
-<!--         android:layout_height="300dp" -->
-<!--         android:layout_gravity="center"/> -->
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_launcher" />
+
+    <cn.way.wandroid.graphics.AnnularProgressView
+        android:id="@+id/progressView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
     <cn.way.wandroid.graphics.RoundtableView
         android:id="@+id/roundtableView"
         android:layout_width="@dimen/roundtable_width"
         android:layout_height="@dimen/roundtable_height"
         android:layout_gravity="center"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp" />
+
+    <cn.way.wandroid.graphics.ColorProgressView
+        android:id="@+id/colorProgressView"
+        android:layout_width="40dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/empty_photo"/>
 
 </RelativeLayout>
