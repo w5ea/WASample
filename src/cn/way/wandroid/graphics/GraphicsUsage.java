@@ -1,7 +1,6 @@
 package cn.way.wandroid.graphics;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.SoundEffectConstants;
 import android.view.View;
@@ -65,17 +64,17 @@ public class GraphicsUsage extends BaseFragmentActivity {
 		ColorProgressView pv = (ColorProgressView) findViewById(R.id.colorProgressView);
 //		pv.setBackgroundColor(Color.RED);
 		pv.setColorRGB(0, 255, 0);
-		pv.setMarginLR(100);
-		pv.setStrokeWidth(60);
+		pv.setMarginLR(3);
+//		pv.setStrokeWidth(60);
 		pv.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				ColorProgressView view = (ColorProgressView) v;
-				if (view.getProgress()==1) {
-					view.setProgress(0);
-				}
 				float newProgress = view.getProgress()+0.1f;
-				newProgress = newProgress>1?1:newProgress;
+				if ((int)(newProgress*100)>100) {
+					newProgress = 0.0f;
+				}
+				WLog.d(""+newProgress);
 				view.setProgress(newProgress);
 			}
 		});

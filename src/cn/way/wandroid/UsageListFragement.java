@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import cn.way.wandroid.activities.tabhost.FragmentTabHostUsage;
 import cn.way.wandroid.applation.PhotoPickerUsage;
 import cn.way.wandroid.toast.Toaster;
 import cn.way.wandroid.utils.WLog;
@@ -59,6 +60,7 @@ public class UsageListFragement extends Fragment{
 	    	addItem(new DummyItem(ExpandableListViewUsage.class));
 	    	addItem(new DummyItem(PhotoPickerUsage.class));
 	    	addItem(new DummyItem(WDialogAndListViewUsage.class));
+	    	addItem(new DummyItem(FragmentTabHostUsage.class));
 	    }
 	    static void addItem(DummyItem item) {
 	        ITEMS.add(item);

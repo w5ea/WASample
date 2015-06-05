@@ -2,6 +2,9 @@ package cn.way.wandroid.webview;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -39,6 +42,21 @@ public class WebviewUsage extends BaseFragmentActivity {
 			 });
 
 		urlInputer = (EditText) findViewById(R.id.url_inputer);
+		Selection.setSelection(urlInputer.getEditableText(), urlInputer.getEditableText().length());
+		urlInputer.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				
+			}
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+			}
+			@Override
+			public void afterTextChanged(Editable s) {
+				Selection.setSelection(s, s.length());
+			}
+		});
 		refreshBtn = findViewById(R.id.refresh_btn);
 		refreshBtn.setOnClickListener(new View.OnClickListener() {
 			@Override

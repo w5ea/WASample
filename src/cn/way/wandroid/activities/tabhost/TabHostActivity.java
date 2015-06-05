@@ -12,6 +12,7 @@ public class TabHostActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabhost);
+		
 		//设置TabHost
         mainTabHost = 
         		(FragmentTabHost) findViewById(R.id.mainTabHost);

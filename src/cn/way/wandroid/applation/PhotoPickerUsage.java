@@ -5,6 +5,7 @@ package cn.way.wandroid.applation;
 
 import java.io.File;
 
+import uk.co.senab.photoview.PhotoView;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -32,7 +33,7 @@ import cn.way.wandroid.utils.WLog;
 public class PhotoPickerUsage extends Fragment {
 	private String[] areas = { "拍照", "从手机相册中选择", "取消" };
 	private Bitmap photo;
-	private ImageView iv;
+	private PhotoView iv;
 	private File photoTempOFile;//通过一个缓存文件来保存原始图像
 	private File photoTempFile;//通过一个缓存文件来保存
 	private int imageWidth = 1024;//最终图片的宽
@@ -54,7 +55,7 @@ public class PhotoPickerUsage extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(cn.way.wandroid.R.layout.usage_photo_picker, container, false);
-		iv = (ImageView) view.findViewById(R.id.imageView);
+		iv = (PhotoView) view.findViewById(R.id.imageView);
 		view.findViewById(R.id.photoBtn).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

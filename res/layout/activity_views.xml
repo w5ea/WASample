@@ -37,4 +37,20 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:numStars="5"/>
+	<cn.way.wandroid.views.StrokeTextView
+	    	android:background="@android:color/white"
+            android:id="@+id/strokeTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/stroke_text_view_text_colors"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            app:textStrokeSize="3dp"
+            app:textStrokeColor="@android:color/holo_red_light"
+            app:textStrokeColorPressed="@android:color/holo_blue_bright"
+            android:clickable="true"
+            />
 </LinearLayout>
